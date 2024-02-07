@@ -1,4 +1,4 @@
-name: DionTvKentrikisMakedonias
+name: DionTvKentrikisMakedonias (Greece)
 
 on:
   schedule:
@@ -34,5 +34,5 @@ jobs:
           
       - name: commit & push
         run: |
-          git commit -m "DionTvKentrikisMakedonias updated"
+          git commit -m "DionTvKentrikisMakedonias updated (Greece) updated"
           git push
