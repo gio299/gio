@@ -30,8 +30,8 @@ https://raw.githubusercontent.com/gio299/strm2hls/main/streams/tvioniathessaloni
 https://raw.githubusercontent.com/gio299/strm2hls/main/streams/centertv.m3u8
 #EXTINF:-1,iViewTvGr
 https://raw.githubusercontent.com/gio299/strm2hls/main/streams/iViewTvGr.m3u8
-#EXTINF:-1,CinemaTime 2
-https://raw.githubusercontent.com/gio299/strm2hls/main/streams/CinemaTime2.m3u8
+#EXTINF:-1,Extacy_tv
+https://raw.githubusercontent.com/gio299/strm2hls/main/streams/Extacy_tv.m3u8
 #EXTINF:-1,VERGINA TV Cyprus
 https://raw.githubusercontent.com/gio299/strm2hls/main/streams/verginatv_cyprus.m3u8
 #EXTINF:-1,DTP Greece
