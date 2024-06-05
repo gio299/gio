@@ -28,8 +28,8 @@ https://raw.githubusercontent.com/gio299/strm2hls/main/streams/ProNews.m3u8
 https://raw.githubusercontent.com/gio299/strm2hls/main/streams/tvioniathessalonikis.m3u8
 #EXTINF:-1,CENTER TV ΚΑΒΑΛΑ
 https://raw.githubusercontent.com/gio299/strm2hls/main/streams/centertv.m3u8
-#EXTINF:-1,CinemaTime
-https://raw.githubusercontent.com/gio299/strm2hls/main/streams/CinemaTime.m3u8
+#EXTINF:-1,iViewTvGr
+https://raw.githubusercontent.com/gio299/strm2hls/main/streams/iViewTvGr.m3u8
 #EXTINF:-1,CinemaTime 2
 https://raw.githubusercontent.com/gio299/strm2hls/main/streams/CinemaTime2.m3u8
 #EXTINF:-1,VERGINA TV Cyprus
@@ -48,5 +48,4 @@ https://raw.githubusercontent.com/gio299/strm2hls/main/streams/marontvgr.m3u8
 https://raw.githubusercontent.com/gio299/strm2hls/main/streams/Kardamena_TV.m3u8
 #EXTINF:-1,Diavata_TV Greece
 http://raw.githubusercontent.com/gio299/strm2hls/main/streams/Diavata_TV.m3u8
-
 
