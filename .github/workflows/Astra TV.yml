@@ -1,4 +1,4 @@
-name: alithiavideo (Twitch)
+name: astratv2021 (Twitch)
 
 on:
   schedule:
@@ -25,7 +25,7 @@ jobs:
         run: |
           pwd
           cd ./core/platforms/
-          python3 twitch.py alithiavideo > ../../streams/alithiavideo.m3u8
+          python3 twitch.py astratv2021 > ../../streams/astratv2021.m3u8
         
       - name: adding everything
         run: |
