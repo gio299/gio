@@ -49,7 +49,7 @@ else:
     raise Exception(f"Failed to fetch the m3u8 file {final_m3u8_url}")
 
 # Save the m3u8 content to a file
-with open('alphacyprus.m3u8', 'w') as file:
+with open('kontra.m3u8', 'w') as file:
     file.write(m3u8_content)
 
 print(f"The final m3u8 URL is {final_m3u8_url}")
