@@ -12,7 +12,7 @@ except:
     from bs4 import BeautifulSoup
 
 # URL of the webpage containing the wmsAuthSign
-webpage_url = 'https://embed.vindral.com/?core.channelId=alteregomedia_megatv1_ci_6cc490c7-e5c6-486b-acf0-9bb9c20fa670'
+webpage_url = 'http://skai.smart-tv-data.com/'
 
 # Fetch the content of the webpage
 response = requests.get(webpage_url)
