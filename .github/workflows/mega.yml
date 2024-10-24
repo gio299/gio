@@ -1,26 +1,31 @@
 name: mega
-
 on:
-  schedule:
-    - cron: '05 */4 * * *'
+  ##schedule:
+    ##- cron: '0 */4 * * *'
   
+
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    
       - uses: actions/checkout@v2
 
+       
       - name: config
         run: |
           git config --global user.email "<>"
-          git config --global user.name "mega bot"
+          git config --global user.name "Update"
+     
       
-      - name: updating tvm
-        run: python3 ${GITHUB_WORKSPACE}/ressources/extr/py/tvm.py > ${GITHUB_WORKSPACE}/ressources/extr/py/mega.m3u8
-        
+      - name: grab m3u files
+        run: |
+            pwd
+            cd ./core/platforms/
+            pip3 install beautifulsoup4
+            python3 mega.py
       - name: git add
         run: |
           git add -A
@@ -28,5 +33,5 @@ jobs:
           
       - name: commit & push
         run: |
-          git commit -m "mega updated"
+          git commit -m "streams updated"
           git push
