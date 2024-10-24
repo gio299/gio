@@ -1,19 +1,10 @@
 
 import requests
+from bs4 import BeautifulSoup
 import re
-import sys
-import subprocess
-def install_bs4():
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "bs4"])
-
-try:
-    from bs4 import BeautifulSoup
-except:
-    install_bs4()
-    from bs4 import BeautifulSoup
 
 # URL of the webpage containing the wmsAuthSign
-webpage_url = 'https://kontrachannel.gr'
+webpage_url = 'https://live24.gr/webtv/kontrachannel/'
 
 # Fetch the content of the webpage
 response = requests.get(webpage_url)
@@ -39,8 +30,8 @@ if not wmsAuthSign:
     raise Exception("wmsAuthSign not found in the webpage")
 
 # Construct the final m3u8 URL with the wmsAuthSign
-m3u8_base_url = ''
-final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}=="
+m3u8_base_url = 'https://kontralive.siliconweb.com/live/kontratv/playlist.m3u8'
+final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}"
 # Fetch the m3u8 content from the final URL
 m3u8_response = requests.get(final_m3u8_url)
 if m3u8_response.status_code == 200:
