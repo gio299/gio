@@ -1,4 +1,3 @@
-
 import requests
 import re
 import sys
@@ -13,7 +12,7 @@ except:
     from bs4 import BeautifulSoup
 
 # URL of the webpage containing the wmsAuthSign
-webpage_url = 'https://www.megatv.com/live/'
+webpage_url = 'https://www.alphacyprus.com.cy/live'
 
 # Fetch the content of the webpage
 response = requests.get(webpage_url)
@@ -39,7 +38,7 @@ if not wmsAuthSign:
     raise Exception("wmsAuthSign not found in the webpage")
 
 # Construct the final m3u8 URL with the wmsAuthSign
-m3u8_base_url = 'https://www.megatv.com/live/'
+m3u8_base_url = 'https://l4.cloudskep.com/alphacyp/acy/playlist.m3u8'
 final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}=="
 # Fetch the m3u8 content from the final URL
 m3u8_response = requests.get(final_m3u8_url)
@@ -49,8 +48,8 @@ else:
     raise Exception(f"Failed to fetch the m3u8 file {final_m3u8_url}")
 
 # Save the m3u8 content to a file
-with open('mega.m3u8', 'w') as file:
+with open('alphacyprus.m3u8', 'w') as file:
     file.write(m3u8_content)
 
 print(f"The final m3u8 URL is {final_m3u8_url}")
-print("The m3u8 content has been saved to mega.m3u8")
+print("The m3u8 content has been saved to alphacyprus.m3u8")
