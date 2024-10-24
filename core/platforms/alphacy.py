@@ -38,7 +38,7 @@ if not wmsAuthSign:
     raise Exception("wmsAuthSign not found in the webpage")
 
 # Construct the final m3u8 URL with the wmsAuthSign
-m3u8_base_url = ''
+m3u8_base_url = 'https://kontralive.siliconweb.com/live/kontratv/playlist.m3u8'
 final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}=="
 # Fetch the m3u8 content from the final URL
 m3u8_response = requests.get(final_m3u8_url)
