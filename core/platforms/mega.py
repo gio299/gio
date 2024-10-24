@@ -1,27 +1,56 @@
+
 import requests
 import re
+import sys
+import subprocess
+def install_bs4():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "bs4"])
 
-print('#EXTM3U')
-print('#EXT-X-VERSION:3')
-print('#EXT-X-STREAM-INF:BANDWIDTH=1755600,RESOLUTION=1280x720,CODECS="avc1.64001f,mp4a.40.2"')
+try:
+    from bs4 import BeautifulSoup
+except:
+    install_bs4()
+    from bs4 import BeautifulSoup
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0",
-    "Referer": "https://embed.vindral.com/?core.channelId=alteregomedia_megatv1_ci_6cc490c7-e5c6-486b-acf0-9bb9c20fa670"
-}
+# URL of the webpage containing the wmsAuthSign
+webpage_url = 'https://www.megatv.com/live/'
 
-url = "https://embed.vindral.com/?core.channelId=alteregomedia_megatv1_ci_6cc490c7-e5c6-486b-acf0-9bb9c20fa670"
-response = requests.get(url, headers=headers)
-
+# Fetch the content of the webpage
+response = requests.get(webpage_url)
 if response.status_code == 200:
-    site_content = response.text
-    match = re.search(r'data-jwt="(.*?)"', site_content)
-    
-    if match:
-        data_jwt_value = match.group(1)
-        live_url_main = f"https://www.megatv.com/live/{data_jwt_value}/live/2/0/index.m3u8"
-        print(live_url_main)
-    else:
-        print("https://Live URL not found in the content.")
+    webpage_content = response.text
 else:
-    print("https://Failed to fetch the website content.")
+    raise Exception(f"Failed to fetch the webpage: {webpage_url}")
+
+# Parse the HTML content using BeautifulSoup
+soup = BeautifulSoup(webpage_content, 'html.parser')
+
+# Find the wmsAuthSign in the HTML content
+wmsAuthSign = None
+for script in soup.find_all('script'):
+    if 'wmsAuthSign' in script.text:
+        # Extract the wmsAuthSign from the script text
+        match = re.search(r'wmsAuthSign=([a-zA-Z0-9%_-]+)', script.text)
+        if match:
+            wmsAuthSign = match.group(1)
+            break
+
+if not wmsAuthSign:
+    raise Exception("wmsAuthSign not found in the webpage")
+
+# Construct the final m3u8 URL with the wmsAuthSign
+m3u8_base_url = 'https://embed.vindral.com/?core.channelId=alteregomedia_megatv1_ci_6cc490c7-e5c6-486b-acf0-9bb9c20fa670'
+final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}=="
+# Fetch the m3u8 content from the final URL
+m3u8_response = requests.get(final_m3u8_url)
+if m3u8_response.status_code == 200:
+    m3u8_content = m3u8_response.text
+else:
+    raise Exception(f"Failed to fetch the m3u8 file {final_m3u8_url}")
+
+# Save the m3u8 content to a file
+with open('alphacyprus.m3u8', 'w') as file:
+    file.write(m3u8_content)
+
+print(f"The final m3u8 URL is {final_m3u8_url}")
+print("The m3u8 content has been saved to mega.m3u8")
