@@ -12,7 +12,7 @@ except:
     from bs4 import BeautifulSoup
 
 # URL of the webpage containing the wmsAuthSign
-webpage_url = 'http://skai.smart-tv-data.com/js/skai.js?r=1122899988'
+webpage_url = 'https://kontrachannel.gr/livetv-kontrachannel.html'
 
 # Fetch the content of the webpage
 response = requests.get(webpage_url)
