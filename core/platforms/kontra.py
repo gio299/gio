@@ -1,3 +1,4 @@
+
 import requests
 import re
 import sys
@@ -12,7 +13,7 @@ except:
     from bs4 import BeautifulSoup
 
 # URL of the webpage containing the wmsAuthSign
-webpage_url = ''
+webpage_url = 'https://kontrachannel.gr/livetv-kontrachannel.html'
 
 # Fetch the content of the webpage
 response = requests.get(webpage_url)
@@ -48,7 +49,7 @@ else:
     raise Exception(f"Failed to fetch the m3u8 file {final_m3u8_url}")
 
 # Save the m3u8 content to a file
-with open('kontra.m3u8', 'w') as file:
+with open('alphacyprus.m3u8', 'w') as file:
     file.write(m3u8_content)
 
 print(f"The final m3u8 URL is {final_m3u8_url}")
