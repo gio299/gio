@@ -39,7 +39,7 @@ if not wmsAuthSign:
     raise Exception("wmsAuthSign not found in the webpage")
 
 # Construct the final m3u8 URL with the wmsAuthSign
-m3u8_base_url = 'https://embed.vindral.com/?core.channelId=alteregomedia_megatv1_ci_6cc490c7-e5c6-486b-acf0-9bb9c20fa670'
+m3u8_base_url = 'https://www.megatv.com/live/'
 final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}=="
 # Fetch the m3u8 content from the final URL
 m3u8_response = requests.get(final_m3u8_url)
