@@ -16,7 +16,7 @@ jobs:
       - name: config
         run: |
           git config --global user.email "<>"
-          git config --global user.name "megam bot"
+          git config --global user.name "mega bot"
       
       - name: updating tvm
         run: python3 ${GITHUB_WORKSPACE}/ressources/extr/py/tvm.py > ${GITHUB_WORKSPACE}/ressources/extr/py/mega.m3u8
