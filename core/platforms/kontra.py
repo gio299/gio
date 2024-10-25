@@ -12,7 +12,7 @@ except:
     from bs4 import BeautifulSoup
 
 # URL of the webpage containing the wmsAuthSign
-webpage_url = 'https://kontrachannel.gr/livetv-kontrachannel'
+webpage_url = 'https://kontralive.siliconweb.com/live/kontratv/playlist.m3u8'
 
 # Fetch the content of the webpage
 response = requests.get(webpage_url)
