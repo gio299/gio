@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import re
 
 # URL of the webpage containing the wmsAuthSign
-webpage_url = 'https://live24.gr/webtv/kontrachannel/'
+webpage_url = 'https://kontrachannel.gr/livetv-kontrachannel.html'
 
 # Fetch the content of the webpage
 response = requests.get(webpage_url)
