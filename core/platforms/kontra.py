@@ -1,7 +1,15 @@
-
 import requests
-from bs4 import BeautifulSoup
 import re
+import sys
+import subprocess
+def install_bs4():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "bs4"])
+
+try:
+    from bs4 import BeautifulSoup
+except:
+    install_bs4()
+    from bs4 import BeautifulSoup
 
 # URL of the webpage containing the wmsAuthSign
 webpage_url = 'https://kontrachannel.gr/livetv-kontrachannel'
@@ -31,7 +39,7 @@ if not wmsAuthSign:
 
 # Construct the final m3u8 URL with the wmsAuthSign
 m3u8_base_url = 'https://kontralive.siliconweb.com/live/kontratv/playlist.m3u8'
-final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}"
+final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}=="
 # Fetch the m3u8 content from the final URL
 m3u8_response = requests.get(final_m3u8_url)
 if m3u8_response.status_code == 200:
@@ -40,7 +48,7 @@ else:
     raise Exception(f"Failed to fetch the m3u8 file {final_m3u8_url}")
 
 # Save the m3u8 content to a file
-with open('kontra.m3u8', 'w') as file:
+with open('kontras.m3u8', 'w') as file:
     file.write(m3u8_content)
 
 print(f"The final m3u8 URL is {final_m3u8_url}")
