@@ -4,7 +4,7 @@ import requests
 url = "https://actionlive.siliconweb.com/actionabr/actiontv/playlist.m3u8"
 
 # Output file name
-output_file = "ert1.m3u8"
+output_file = "alert.m3u8"
 
 try:
     # Fetch the content from the URL
