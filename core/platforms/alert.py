@@ -1,21 +1,56 @@
+
 import requests
-
-# URL of the M3U8 file to read
-url = "https://actionlive.siliconweb.com/actionabr/actiontv/playlist.m3u8"
-
-# Output file name
-output_file = "alert.m3u8"
+import re
+import sys
+import subprocess
+def install_bs4():
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "bs4"])
 
 try:
-    # Fetch the content from the URL
-    response = requests.get(url)
-    response.raise_for_status()  # Raise an error for bad status codes
+    from bs4 import BeautifulSoup
+except:
+    install_bs4()
+    from bs4 import BeautifulSoup
 
-    # Write the content to the new file
-    with open(output_file, "w") as file:
-        file.write(response.text)
-        
-    print(f"Contents copied to {output_file} successfully.")
+# URL of the webpage containing the wmsAuthSign
+webpage_url = 'https://www.alerttv.com.gr/live'
 
-except requests.exceptions.RequestException as e:
-    print(f"Error fetching the M3U8 file: {e}")
+# Fetch the content of the webpage
+response = requests.get(webpage_url)
+if response.status_code == 200:
+    webpage_content = response.text
+else:
+    raise Exception(f"Failed to fetch the webpage: {webpage_url}")
+
+# Parse the HTML content using BeautifulSoup
+soup = BeautifulSoup(webpage_content, 'html.parser')
+
+# Find the wmsAuthSign in the HTML content
+wmsAuthSign = None
+for script in soup.find_all('script'):
+    if 'wmsAuthSign' in script.text:
+        # Extract the wmsAuthSign from the script text
+        match = re.search(r'wmsAuthSign=([a-zA-Z0-9%_-]+)', script.text)
+        if match:
+            wmsAuthSign = match.group(1)
+            break
+
+if not wmsAuthSign:
+    raise Exception("wmsAuthSign not found in the webpage")
+
+# Construct the final m3u8 URL with the wmsAuthSign
+m3u8_base_url = 'https://itv.streams.ovh/ALEERT/ALEERT/playlist.m3u8'
+final_m3u8_url = f"{m3u8_base_url}?wmsAuthSign={wmsAuthSign}=="
+# Fetch the m3u8 content from the final URL
+m3u8_response = requests.get(final_m3u8_url)
+if m3u8_response.status_code == 200:
+    m3u8_content = m3u8_response.text
+else:
+    raise Exception(f"Failed to fetch the m3u8 file {final_m3u8_url}")
+
+# Save the m3u8 content to a file
+with open('alert.m3u8', 'w') as file:
+    file.write(m3u8_content)
+
+print(f"The final m3u8 URL is {final_m3u8_url}")
+print("The m3u8 content has been saved to alert.m3u8")
