@@ -1,7 +1,7 @@
 import requests
 
 # URL of the M3U8 file to read
-url = "https://itv.streams.ovh/ALEERT/ALEERT/playlist.m3u8"
+url = "https://actionlive.siliconweb.com/actionabr/actiontv/playlist.m3u8"
 
 # Output file name
 output_file = "alert.m3u8"
