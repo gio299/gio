@@ -12,7 +12,7 @@ try:
     response.raise_for_status()  # Raise an error for bad status codes
 
     # Write the content to the new file
-    with open(output_file, "alert") as file:
+    with open(output_file, "w") as file:
         file.write(response.text)
         
     print(f"Contents copied to {output_file} successfully.")
