@@ -1,0 +1,4 @@
+#EXTM3U
+#EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=3011824,RESOLUTION=1024x576,CODECS="avc1.640028,mp4a.40.2"
+https://av.hellasnet.tv/rest2.live.hn/trt/playlist.m3u8
