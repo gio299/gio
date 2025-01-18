@@ -1,0 +1,38 @@
+name: StarKENTRIKIS (dailymotion)
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  
+  workflow_dispatch:
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+       
+      - name: get config
+        run: |
+          git config --global user.email "<>"
+          git config --global user.name "Update"
+      
+      - name: grab twitch stream
+        run: |
+          pwd
+          cd ./core/platforms/
+          python3 dailymotion.py k5Hfx6eeaTjBE5zRXcn > ../../streams/StarKENTRIKIS.m3u8
+        
+      - name: adding everything
+        run: |
+          git add -A
+          ls -la 
+          
+      - name: commit & push
+        run: |
+          git commit -m "StarKENTRIKIS (dailymotion) updated"
+          git push
