@@ -1,1 +1,1 @@
-[{"error":"Can not find channel"}]
+An error occurred while retrieving the access token: HTTPSConnectionPool(host='gql.twitch.tv', port=443): Max retries exceeded with url: /gql (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x7f08f3829460>, 'Connection to gql.twitch.tv timed out. (connect timeout=None)'))
