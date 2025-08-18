@@ -23,56 +23,6 @@ jobs:
         sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp
         sudo chmod a+rx /usr/local/bin/yt-dlp
 
-    - name: Get beINSportsHaber
-      run: |
-        touch ./spor/beinsportshaber.m3u8
-        sudo cat >./spor/beinsportshaber.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/beinsportsturkiye/live)
-        EOL
-
-    - name: Get ASpor
-      run: |
-        touch ./spor/aspor.m3u8
-        sudo cat >./spor/aspor.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/@ASpor/live)
-        EOL
-
-    - name: Get TayTv
-      run: |
-        touch ./spor/taytv.m3u8
-        sudo cat >./spor/taytv.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/@TayTvOfficial/live)
-        EOL
-
-    - name: Get AHaber
-      run: |
-        touch ./haber/ahaber.m3u8
-        sudo cat >./haber/ahaber.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/ahaber/live)
-        EOL
-
-    - name: Get APara
-      run: |
-        touch ./haber/apara.m3u8
-        sudo cat >./haber/apara.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/channel/UCzrGg6iyRDuUSnO0cQ5oLcA/live)
-        EOL
-
     - name: Get euronewsgr
       run: |
         touch ./euronewsgr.m3u8
@@ -81,56 +31,6 @@ jobs:
         #EXT-X-VERSION:3
         #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
         $(yt-dlp --print urls https://www.youtube.com/@euronewsgr/live)
-        EOL
-
-    - name: Get Sirinler
-      run: |
-        touch ./cocuk/sirinler.m3u8
-        sudo cat >./cocuk/sirinler.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/@sirinler/live)
-        EOL
-
-    - name: Get FirePlace
-      run: |
-        touch ./other/fireplace.m3u8
-        sudo cat >./other/fireplace.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/@FobosPlanet/live)
-        EOL
-
-    - name: Get Ocean
-      run: |
-        touch ./other/ocean.m3u8
-        sudo cat >./other/ocean.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/@Relax321Relaxing/live)
-        EOL
-
-    - name: Get SnowStorm
-      run: |
-        touch ./other/snowstorm.m3u8
-        sudo cat >./other/snowstorm.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/@purerelaxingvibes/live)
-        EOL
-
-    - name: Get RelaxingMusic
-      run: |
-        touch ./other/relaxingmusic.m3u8
-        sudo cat >./other/relaxingmusic.m3u8 <<EOL
-        #EXTM3U
-        #EXT-X-VERSION:3
-        #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2560000
-        $(yt-dlp --print urls https://www.youtube.com/@timjanis/live)
         EOL
 
     - name: git add
@@ -142,3 +42,7 @@ jobs:
       run: |
         git commit -m "links are updated"
         git push
+
+    
+
+    
