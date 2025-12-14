@@ -1,0 +1,4 @@
+#EXTM3U
+#EXTVLCOPT:http-referrer=https://thessaliachannel.gr/
+#EXTVLCOPT:http-user-agent=Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.101 Mobile Safari/537.36
+https://thessaliachannel.gr:3339/live/thesstvlive.m3u8
