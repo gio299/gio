@@ -34,5 +34,5 @@ jobs:
           
       - name: commit & push
         run: |
-          git commit -m "Maron TV (Twitch) updated"
+          git commit -m "blutelevizion (Twitch) updated"
           git push
