@@ -1,1 +1,1 @@
-[{"error":"Can not find channel"}]
+An error occurred while retrieving the stream URL: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
